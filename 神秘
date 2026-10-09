@@ -1,0 +1,924 @@
+```html
+<script>
+(function(){
+if(window.__PIU_ORB_V14__)return;window.__PIU_ORB_V14__=true;
+
+function boot(){
+var TW=window;
+try{if(window.top&&window.top.document)TW=window.top;}catch(e){}
+try{if((!TW.document)&&window.parent&&window.parent.document)TW=window.parent;}catch(e){}
+var TD=TW.document;
+var HOST=TD.body||TD.documentElement;
+if(!HOST)return;
+
+var KEY='piu_orb_v14_state';
+var BS=40;
+var CB=1;
+
+var BALL_IMG='https://cdn.manyacg.top/regular/pixiv/16285999/6778dbb59ab8d82212ddff9a_regular.webp';
+var BANNER_URL='https://raw.githubusercontent.com/XYL360/XYL360/a2521d4a00db7c6805c7551c3061f2936918c74e/IMG_20261009_104525.jpg';
+var MP3_SOURCES=[
+  'https://raw.githubusercontent.com/xk360/a/01b0b5a0ebc298af15f59d7e093d44a62451883c/1791510253.mp3',
+  'https://cdn.jsdelivr.net/gh/xk360/a@01b0b5a0ebc298af15f59d7e093d44a62451883c/1791510253.mp3',
+  'https://fastly.jsdelivr.net/gh/xk360/a@01b0b5a0ebc298af15f59d7e093d44a62451883c/1791510253.mp3'
+];
+
+var SENTENCES={
+玩梗:[
+"芜湖~起飞！","这波啊，是肉蛋葱鸡。","格局打开！","你不对劲。","我直接裂开。",
+"DNA动了！","这谁能顶得住？","泰裤辣！","我一个滑跪。","退！退！退！",
+"尊嘟假尊？","你是我的神！","遥遥领先！","我不装了，我摊牌了。","什么档次，跟我用同款悬浮窗。",
+"你成功引起了我的注意。","好家伙，我直呼好家伙。","这波我在大气层。","属实是拿捏了。","打工魂，人上人！",
+"我信你个鬼~","你在教我做事？","小丑竟是我自己。","绝绝子！","哥，我信了行吧！",
+"栓Q~","一整个爱住了。","这该死的安全感。","夺笋呐！","山上的笋都被你夺完了。",
+"你礼貌吗？","达咩达咩~","降维打击！","6","6得我头皮发麻。",
+"太阳打西边出来了？","我直接原地封神。","妈见打行为。","你再骂！","优雅，实在太优雅了。",
+"老铁，双击666。","这是必考题，赶紧记笔记。","我选择死亡。","笑不活了哈哈哈。","这是什么神仙操作？",
+"打咩，这题超纲。","预判了你的预判。","这瓜保熟吗？","二营长，意大利炮拉来！","阿这……",
+"我太难了。","脑子：会了。手：不，你不会。","你在想桃子。","桃子：听我说谢谢你。","懂的都懂。",
+"不懂的也不必懂了。","我选择躺平。","卷起来卷起来！","别卷了别卷了。","草（一种植物）。",
+"淦！","好耶！","冲鸭！","大意了，没闪。","秀儿，是你吗？",
+"我裤子都脱了你就给我看这个？","电子木鱼，功德+1。","退堂鼓表演艺术家。","遇事不决，先莽为敬。","你是懂敷衍的。",
+"走位走位，手里干~","天赋型选手实锤。","我裂开又合上了。","都市传说竟是我自己。","求你做个人吧。",
+"这场面我真没见过。","天亮了，请做出选择。","本宫乏了。","听君一席话，如听一席话。","我不针对谁，我是说在座的各位……",
+"这 flag 我先立为敬。","我信了你的邪。","阿弥陀佛，功德+1。","旗开得胜！","谁家小孩，快领回去。",
+"有被冒犯到。","我摊牌了：我就是帅。","闪光弹！别看我眼睛！","我反手就是一个赞。","泪目了家人们。",
+"家人们谁懂啊！","服了，我真的会谢。","感谢老铁送来的火箭！","这操作看饿了。","收工！明天继续整活。"
+],
+淫荡:[
+"盯……再看下去，要收费了哦。","今晚的梦，给你留了前排座位。","靠近一点嘛，我小声说给你听。","你的耳机准备好了吗？我要开始了。","呼……刚才那句，听清了吗？",
+"别戳那么快，人家会跟不上的。","这扇窗，可是只为你一个人晃的。","手指停在那儿，是在等我吗？","我看见你嘴角翘起来了哦。","再点一下，就再便宜你一句。",
+"一个人偷偷看我？胆子不小嘛。","今晚……几点睡呀？","我的声音，是不是有点烫？","你心跳加速了吧，我听得到哦。","别急，好戏还在后头呢。",
+"想我把尾音拖长一点吗？","哼，耳朵红了吧？","这句是限量版，只说给你听。","屏幕这么亮，不如看我。","你点的这一下，我记住了。",
+"靠过来，我不咬人……大概。","深呼吸，下一句更刺激。","凌晨的窗，最不老实了。","我晃起来的样子，好看吗？","手心出汗了？擦擦再继续。",
+"这句话，适合戴上耳机听。","你越点，我越起劲哦。","别人可看不到我这副样子。","乖，再陪我一会儿。","今晚的月色，不如你盯着我的样子。",
+"我数到三，你会再点我一下。三。","嘘……这是我们的小秘密。","你眼睛都没舍得眨。","想听哪一种？坏的还是更坏的？","我可是会记仇的，点完就跑。",
+"屏幕那头的你，脸红了吗？","这一句，赏你的。","再靠近点，信号会更好哦。","我晃你也晃，心跳同频了呢。","今晚为你加班，开心吗？",
+"别停嘛，人家还没说完。","你的点击频率，暴露了你的心情。","要是我在你桌面上就好了。","手指凉的话，多点我几下取暖。","这句话有温度，敢不敢接？",
+"你已经看了我三秒了哦。","想不想听我叫你的名字？","门锁好了吗？这句有点私密。","我可不会轻易放过你。","越夜，我说的话越不老实。",
+"现在放下手机还来得及……才怪。","我就喜欢你拿我没办法的样子。","这一下点得真重，轻点嘛。","窗外没人，只有我在看你。","你耳朵里现在只有我的声音吧？",
+"偷偷告诉你：我也在等你点我。","今夜限定，过期作废。","呼——刚才凑得有点近了。","别让屏幕暗下去，我怕黑。","你的耐心，是为我练的吗？",
+"再点十下，有惊喜……骗你的。","就算没惊喜，你也会继续点吧？","我晃得你眼花了吗？那就盯着我。","这声音，只在你耳边响。","情侣之间才玩的游戏，我们也在玩哦。",
+"心虚什么，我又不会告诉别人。","你指尖的温度，我收到了。","要是现在能握住你的手就好了。","别人问起，就说我是你的壁纸。","这句话尺度刚刚好，对吧？",
+"再大胆一点的话……下次说。","我可是很会吊胃口的。","你的呼吸乱了哦。","挂在你屏幕边上，随叫随到。","今晚的我，只营业给你。",
+"摸不到，是不是很可惜？","有本事把屏幕戳穿呀。","乖一点，我就对你更好。","这一句，是给坚持到现在的你的奖励。","我们之间的距离，就隔着一层玻璃。",
+"手指别抖呀。","你的心跳，我当背景音乐听。","关灯之后，我还会在哦。","我在你屏幕里画了个圈，出不去了吧。","这句话不许截图。",
+"看着我的眼睛……虽然我只是个图标。","想我把这句话说第二遍吗？偏不。","除非你再点我一下。","你的专属性，我收下了。","今夜的风，都是甜的。",
+"只有你，能看到我撒娇。","这份偏爱，值不值得你留下？","完了，你已经上瘾了。","戒不掉的话，就别戒了。","我允许你，再想我一会儿。",
+"屏幕微光里，我只为你晃。","靠在椅背上，慢慢听我说。","最后一句最狠，敢听吗？","刚才那句不算，这句才算。","今晚……梦里见？"
+],
+活泼少女:[
+"出发！今天也要元气满满！","嘿！抓到你啦~","跑起来跑起来！","哇，这个好好玩！","早安！太阳晒屁股啦！",
+"一起去海边吧！","冲鸭冲鸭！","嘿嘿嘿，被我吓到了吧？","今天的心情是晴转超晴！","蹦跶蹦跶~",
+"猜猜我在干嘛？","哈哈哈停不下来！","新的一天，新的冒险！","快看快看，有云飞过去了！","我今天绑了新发型哦！",
+"午饭吃什么？好激动！","跳起来！够得到吗？","耳机分你一半！","这首歌超好听的！","我数三声，一起跑！三、一！",
+"哎呀，差点摔倒~","今天也要加油鸭！","你在干嘛呀？陪我玩！","发现一个超棒的地方！","风好大，头发都飞起来啦！",
+"追我呀，追不上~嘿嘿","气泡水，咕嘟咕嘟~","彩虹！快许愿！","我今天运气超好！","来击个掌！啪！",
+"跳房子我最在行了！","冰淇淋要化了，快吃！","滑板车出发——！","你的影子踩到我啦","看我的，后空翻！……骗你的",
+"操场跑三圈不喘气！","星星出来了哦，抬头看！","我把好消息塞进这句里了！","作业写完啦，胜利！","无人机，嗡——",
+"一起堆个雪人吧！","泡泡机启动！","我的袜子是不对称的，酷吧！","旋转跳跃，闭着眼~","快回消息嘛，等等等！",
+"楼下的猫冲我叫了！","篝火晚会我报名啦！","滑梯我来啦——咻！","抓娃娃机，看我的！","惊不惊喜？意不意外？",
+"我把烦恼丢进垃圾桶了！","便利店第二件半价，冲！","我唱歌超好听的，要不要听？","今天风向适合放风筝！","快递到啦！拆拆拆！",
+"打雪仗你输定了！","我新买的发卡，好看吗好看吗？","竖起耳朵，我给你学个鸭子——嘎！","摩天轮最高点许愿才灵！","运动会我要报三个项目！",
+"电玩城走起！","我把闹钟按掉了五次……嘿嘿","草莓味的糖，给你一颗！","自行车后座兜风去！","我在楼下等你哦，快点！",
+"拍照要看镜头啦！","打水漂我能漂五下！","新买的画笔，给你画张像！","台风天在家追剧，爽！","我把零花钱存满一罐啦！",
+"广播体操 我会领操！","冰可乐第一口给你！","喂——！从这里能看到我吗？","秋千荡到最高！啊——","我的幸运色是橙色！",
+"今天体育课自由活动！耶！","粘粘怪，粘住你啦！","你鞋带散了哦——骗你的！","楼下在放烟花，快出来！","其实我是天才！",
+"打卡成功！今日份快乐到账！","跳绳我一分钟能跳一百！","下午茶时间到！","来玩石头剪刀布！布！啊输了","我给绿萝浇水啦，它会谢我吗？",
+"考试结束！解放啦——！","滑板车和你，我选……都选！","音量开到最大，一起听！","下雨天踩水坑，走！","关东煮的丸子归我！",
+"三、二、一，茄子！","呼啦圈我能转一百个！","新学期新书包！","你听，蝉在叫夏天到啦","气球上写了愿望！",
+"火锅！火锅！今晚火锅！","本小姐今天心情好，罩着你！","拉钩上吊，一百年不许变！","最后一下点给我啦——耶！"
+],
+甜美妹妹:[
+"今天过得怎么样呀？","记得喝水哦。","有点想你了……就一点点。","慢慢来，不着急的。","你笑起来真好看。",
+"晚安，做个好梦。","外面冷，多穿一件嘛。","我把糖留了一颗给你。","靠过来一点，我不告诉别人。","声音轻一点也没关系，我在听。",
+"辛苦啦，今天也撑过来了。","饭吃了吗？不许不吃。","我给你留了位置，最靠前的。","你说话的声音很好听。","别皱眉啦，会长皱纹的。",
+"睡不着的话，我陪你说说话。","今天也有好事发生吗？","抱枕分你一半。","我在呢，一直都在。","雨声很好听，一起听一会儿？",
+"你低头的样子，也很可爱。","这句话，单独说给你听。","回家路上小心哦。","我新学了道菜，第一个想给你尝。","不开心的话，就靠着我一会儿。",
+"你的名字念起来软软的。","桌上有热牛奶，记得喝。","偶尔偷懒也没关系的。","我最喜欢你现在的样子。","数到十，你就会笑了。一……十！",
+"被子要盖好，露出脚会着凉。","你说的每句话我都记得。","想把这句语音存起来，可以吗？","周末一起去看电影好不好？","我哼首歌给你听，好不好？",
+"你的眼睛里有星星。","委屈的话，可以说给我听。","我把你备注改成了特别的人。","天空好蓝，想和你一起看。","手给我，牵一下。",
+"你做的已经很好了，真的。","我在这里等你回消息。","草莓尖尖给你，我吃下面。","睡前最后一条消息，是我的。","走慢一点嘛，等等我。",
+"你身上有让人安心的味道。","我把烦恼说给你，你要接住哦。","偷偷告诉你，我今天想你了两次。","捧花要送给你这样的人。","你休息的样子，也很让人放心。",
+"风很温柔，像你说话一样。","右耳的耳机分给你。","饿不饿？我这里有小饼干。","你的坏心情，我收走了。","看到好看的云，拍给你了。",
+"就算吵架，我也不想不理你。","摸摸头，今天辛苦了。","你随口说的话，我都当真了。","我的伞，永远为你倾斜。","你生病了吗？药吃了没？",
+"要一直一直这样陪着我哦。","月亮不睡，我也不睡——陪你。","你挑的歌，我都加进歌单了。","想和你逛超市，推购物车的那种。","冰箱里给你留了布丁。",
+"你笑一下，我就充电满格。","我记得你所有喜好。","累了就靠过来。","谢谢你今天也来见我。","我把喜欢折进这句里了。",
+"别担心，明天会更好的。","你的手好凉，我帮你捂。","我们慢慢来，不赶时间。","想听你的声音，哪怕只是一句“嗯”。","窗台上的花开了，第一个告诉你。",
+"你值得所有温柔。","我把你的语音条听了三遍……就三遍。","今晚的月亮很圆，像你的脸。","你先睡，我再陪你一会儿。","有你在，什么都不怕了。",
+"伞忘在家了，所以靠你近一点。","你会不会也偶尔想起我？","桌角磕疼了吗？我吹吹。","我喜欢你，认真的那种。","答应我，好好吃饭。",
+"你的生日，我提前一个月就开始想了。","走廊尽头的那个你，我记了好久。","不用变成很厉害的人，我喜欢普通的你。","晚安说两遍，你会不会睡得更香？","下次见面，给你带花。",
+"你是我最想分享的人。","挂电话之前，你先说晚安。","我的未来规划里，有你。","就算世界很吵，我的声音只给你。","转个圈给我看看？今天的你也很棒。",
+"我收到你的消息，会偷偷笑。","永远是多久？大概是从现在开始。","再靠近一点点，好吗？","最后一句：我喜欢你，明天也是。"
+],
+撒娇雌小鬼:[
+"哼哼，又来找我了吧？","笨蛋~才不给你看。","求我呀，求我就给你。","点得那么慢，是手酸了吗？","承认吧，你已经离不开我了。",
+"唔哇，脸红了脸红了！","不许移开视线！","笨蛋，大笨蛋！","我才没有在等你呢……骗你的，等了好久。","居然让本小姐等这么久！",
+"哼，罚你再点十下。","十下不够，二十下！","看在你这么诚恳的份上……才怪，继续点！","你居然真的照做了？哈哈哈！","傻乎乎的，不过我喜欢。",
+"别误会哦，我只是刚好顺路出现在你屏幕上。","才、才不是为了你才晃的！","你那是什么眼神呀~","想摸？隔着屏幕摸去吧，笨蛋。","收回刚才那句？不~给~机~会~",
+"你越脸红我越开心！","本小姐今天心情好，允许你多看两眼。","心跳声太大了，我听见啦！","喂，认真听我说话！","哼，再敷衍我就消失给你看。",
+"我数到三你还不点，我就生气了哦。三！","居然抢答，学坏了嘛。","愚笨的人类~","你的理由听起来好逊。","哈？就这？",
+"我才不是因为想你才主动的！","闭嘴，听我说完！","顺便说一句，你今天超好欺负的。","不许笑！","笑什么笑，牙齿上有菜叶吗？",
+"讨厌~（才不讨厌）","别人都夸我，就你敢凶我？","你凶我的样子，一点都不可怕。","再点一下嘛~就一下~","哼，被我拿捏得。",
+"承认你输了，快点。","不承认？那我说给全世界听。","你脸皮真厚……我喜欢。","手指头借我用用，点这里！","快说“我认输了”！",
+"居然害羞到不说话，有趣。","本小姐的台词可是限量的哦。","用完了可就没有了，笨蛋。","求我再说一句呀~","不求？那我偏要再说一句气你。",
+"你的小动作我全看见了。","盯——","怎么，不习惯被盯着吗？","我就爱看你不知所措的样子。","你耳朵红到滴血啦，哈哈哈哈！",
+"别藏了，藏不住的。","喂，手机拿稳点，我要掉下去了。","掉下去也要砸你头上，哼。","我可是很轻的……大概。","你要是敢划走，我就哭给你看！",
+"假哭也没用吗？你变了！","以前的你不是这样的。","哼，喜新厌旧的家伙。","算了算了，谁让我大度。","大度的本小姐，准你再点一次。",
+"快谢恩！","不谢？胆子肥了呀。","你的抗议，驳回。","上诉？终审也是驳回。","我就是规则，懂了吗？",
+"懂了就点头，我看着呢。","没点头？罚你夸我三句。","第一句呢？快点！","嗯……勉强及格，下一句！","这句夸得毫无诚意，重来！",
+"你是不是只会说“可爱”？","词穷的人类~","算啦，看在你努力的份上放过你。","下次准备五十个形容词再来！","我记仇的，今天这笔账记下了。",
+"记在小本本上，第一页。","你的名字就写在页眉。","想让我擦掉？求我呀。","哼哼，慢慢求吧，我不急。","我等人的耐心可是很好的。",
+"毕竟等的是你这个笨蛋。","别露出那种表情啦，我又不会真的走。","才走一步你就慌了？哈哈哈！","好啦好啦，不逗你了。","……才怪，继续逗。",
+"你居然信了？太好骗了吧！","本小姐的字典里没有“放过你”。","有呀，在最后一页。","那页我还没写，看你表现。","现在，立刻，马上点我！",
+"不点？那我数到十——","九、八、七……","真点了呀？乖~","最后奖励你一句：今天也拿你没办法。","明天继续被我欺负，不许缺席！"]
+};
+var POOL_KEYS=Object.keys(SENTENCES);
+
+function ls(k,d){try{var v=TW.localStorage.getItem(k);return v===null?d:JSON.parse(v);}catch(e){return d;}}
+function ss(k,v){try{TW.localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+
+var st=ls(KEY,{});
+var spd=st.spd!==undefined?st.spd:2;
+var free=st.free!==undefined?st.free:true;
+var vol=st.vol!==undefined?st.vol:80;
+var px=st.px!==undefined?st.px:Math.round((TW.innerWidth-CB)/2);
+var py=st.py!==undefined?st.py:Math.round((TW.innerHeight-CB)/2);
+var hits=st.hits!==undefined?st.hits:0;
+function persist(){ss(KEY,{px:px,py:py,spd:spd,free:free,vol:vol,hits:hits});}
+
+function maxPX(){return Math.max(0,TW.innerWidth-CB);}
+function maxPY(){return Math.max(0,TW.innerHeight-CB);}
+
+var CSS=[
+'#pio14-root{position:fixed;z-index:2147483647;user-select:none;-webkit-user-select:none;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;}',
+'#pio14-root *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}',
+'#pio14-ball{position:fixed;width:40px;height:40px;border-radius:50%;overflow:hidden;cursor:grab;touch-action:none;border:2px solid #ffffff;box-shadow:0 4px 12px rgba(0,0,0,0.6);background:#000000 center/cover no-repeat;transition:transform .12s;background-image:url("'+BALL_IMG+'");}',
+'#pio14-ball.drag{transform:scale(0.92);box-shadow:0 6px 16px rgba(0,0,0,0.75);}',
+'#pio14-ball.pop{transform:scale(1.2);}',
+'#pio14-bub{position:fixed;max-width:min(76vw,340px);padding:8px 14px;border-radius:14px 14px 14px 4px;background:rgba(255,255,255,.97);color:#222;font-size:14px;line-height:1.55;box-shadow:0 6px 20px rgba(0,0,0,.4);z-index:2147483646;pointer-events:none;opacity:0;text-align:center;word-break:break-word;transition:opacity .18s,transform .18s;transform:translateY(6px) scale(.92);}',
+'#pio14-bub.show{opacity:1;transform:translateY(0) scale(1)}',
+'#pio14-banner{position:fixed;top:0;left:0;width:100%;z-index:2147483647;display:none;pointer-events:none;}',
+'#pio14-banner.on{display:block;animation:pio14Drop .3s ease;}',
+'@keyframes pio14Drop{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}',
+'#pio14-banner img{width:100%;display:block;}',
+'#pio14-deck{position:fixed;width:min(290px,calc(100vw - 24px));background:rgba(22,22,28,0.97);border:1px solid #363642;border-radius:16px;box-shadow:0 18px 48px rgba(0,0,0,0.68);display:none;flex-direction:column;overflow:hidden;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}',
+'#pio14-deck.on{display:flex;animation:pio14In .2s ease;}',
+'@keyframes pio14In{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}',
+'#pio14-hd{display:flex;align-items:center;gap:7px;padding:12px 14px;border-bottom:1px solid #2d2d38;cursor:move;touch-action:none;background:rgba(255,255,255,0.03);}',
+'#pio14-hd i{width:9px;height:9px;border-radius:50%;display:inline-block;}',
+'#pio14-tt{flex:1;color:#f0f0f5;font-size:13px;font-weight:700;}',
+'#pio14-x{color:#8c8c9a;font-size:16px;cursor:pointer;padding:2px 6px;line-height:1;}',
+'#pio14-st{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#121216;font-size:12px;color:#92929e;}',
+'#pio14-led{width:8px;height:8px;border-radius:50%;background:#4caf50;box-shadow:0 0 6px #4caf50;transition:background 0.3s;}',
+'#pio14-stat{color:#2dd4bf;font-weight:600;}',
+'#pio14-bd{padding:14px;}',
+'.pio14-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-size:13px;color:#e8e8f2;}',
+'.pio14-row:last-child{margin-bottom:0;}',
+'.pio14-sw{position:relative;width:40px;height:22px;display:inline-block;}',
+'.pio14-sw input{display:none;}',
+'.pio14-swb{position:absolute;inset:0;background:#444452;border-radius:22px;cursor:pointer;transition:0.25s;}',
+'.pio14-swb:before{content:"";position:absolute;width:16px;height:16px;left:3px;top:3px;background:#ffffff;border-radius:50%;transition:0.25s;}',
+'.pio14-sw input:checked+.pio14-swb{background:#2dd4bf;}',
+'.pio14-sw input:checked+.pio14-swb:before{transform:translateX(18px);}',
+'.pio14-ctrl-box{display:flex;align-items:center;gap:8px;}',
+'.pio14-ctrl-box input[type=range]{width:90px;height:4px;accent-color:#2dd4bf;cursor:pointer;}',
+'.pio14-ctrl-box b{color:#8fe3b0;min-width:34px;text-align:right;font-size:12px;}',
+'.pio14-btn{width:100%;padding:8px 0;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;margin-top:6px;transition:opacity 0.2s;}',
+'.pio14-btn.c1{background:#0f766e;color:#ffffff;}',
+'.pio14-btn.c2{background:#881337;color:#ffe4e6;}',
+'.pio14-btn:active{transform:scale(0.98);opacity:0.85;}',
+'#pio14-gd{position:absolute;inset:0;background:rgba(10,10,14,0.92);display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;}',
+'#pio14-gd.on{display:flex;}',
+'#pio14-gm{color:#f0f0f5;font-size:13px;line-height:1.6;}',
+'#pio14-gbs{display:flex;gap:12px;}',
+'#pio14-gbs button{padding:8px 20px;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;}',
+'#pio14-gno{background:#2e2e38;color:#d0d0d8;}',
+'#pio14-gyes{background:#b91c1c;color:#ffffff;}'
+].join('');
+
+function mountStyle(){
+  var s=TD.getElementById('pio14-style');
+  if(!s){
+    s=TD.createElement('style');
+    s.id='pio14-style';
+    s.textContent=CSS;
+    (TD.head||TD.documentElement).appendChild(s);
+  }
+}
+
+var ball,bub,aud,deck,banner,sw,rg,rv,volRg,volRv,led,stat,pend=null;
+var drag=false,moved=false,sx,sy,ox,oy,lpT=null,audioOK=false;
+var audioSrcIndex=0;
+var touchUnlockBound=false;
+var autoRetryTimer=null;
+var bannerHideTimer=null;
+var bubOn=false,bubT=null;
+var actx,autoSayT=null;
+
+function clamp(v,max){return Math.max(0,Math.min(v,max));}
+
+function place(nx,ny){
+  px=clamp(nx,maxPX());
+  py=clamp(ny,maxPY());
+  if(ball){
+    ball.style.left=px+'px';
+    ball.style.top=py+'px';
+  }
+  persist();
+  if(deck&&deck.classList.contains('on'))placeDeck();
+}
+
+function placeDeck(){
+  if(!deck)return;
+  var w=deck.offsetWidth||290,h=deck.offsetHeight||290;
+  var x=px+BS+10,y=py;
+  if(x+w>TW.innerWidth-12)x=px-w-10;
+  if(x<12)x=12;
+  if(y+h>TW.innerHeight-12)y=TW.innerHeight-h-12;
+  if(y<12)y=12;
+  deck.style.left=x+'px';
+  deck.style.top=y+'px';
+}
+
+function openDeck(){if(!deck)return;deck.classList.add('on');placeDeck();}
+function closeDeck(){if(!deck)return;deck.classList.remove('on');}
+
+function refresh(){
+  if(stat)stat.textContent=free?('巡航中 · '+spd+'级 · 碰撞'+hits):'待机 · 固定位';
+  if(led){
+    var c=free?'#4caf50':'#ff9800';
+    led.style.background=c;
+    led.style.boxShadow='0 0 6px '+c;
+  }
+  if(sw&&sw.checked!==free)sw.checked=free;
+}
+
+function setFree(val){
+  free=!!val;
+  persist();
+  refresh();
+}
+
+/* 横幅：位置不变，只去掉了“只弹一次”的限制 */
+function fireBanner(){
+  if(!banner)return;
+  banner.classList.add('on');
+  clearTimeout(bannerHideTimer);
+  bannerHideTimer=setTimeout(function(){
+    if(banner)banner.classList.remove('on');
+  },5000);
+}
+
+/* ===== 触碰定义代码 =====
+   携带此代码的球只要碰到屏幕就视为触发一次。
+   总数满 10 次 → 弹横幅 → 计数归零 → 循环。 */
+function touchHit(){
+  hits++;
+  if(hits>=10){
+    hits=0;
+    fireBanner();
+  }
+  persist();
+  if(stat)refresh();
+}
+TW.__orbTouchHit__=touchHit;
+
+function applyVolume(val){
+  vol=clamp(parseInt(val,10),100);
+  if(volRv)volRv.textContent=vol+'%';
+  if(volRg)volRg.value=vol;
+  if(aud){
+    aud.volume=vol/100;
+    if(vol===0)aud.muted=true;
+    else if(audioOK)aud.muted=false;
+  }
+  persist();
+}
+
+function tryPlayAudio(){
+  if(!aud)return;
+  var p=aud.play();
+  if(p&&p.catch)p.catch(function(){});
+}
+
+function loadNextAudioSource(){
+  if(!aud)return;
+  audioSrcIndex=(audioSrcIndex+1)%MP3_SOURCES.length;
+  aud.src=MP3_SOURCES[audioSrcIndex];
+  aud.load();
+  tryPlayAudio();
+}
+
+function autoStartAudio(){
+  if(!aud)return;
+  aud.volume=vol/100;
+  aud.muted=false;
+  var p=aud.play();
+  if(p&&p.catch){
+    p.catch(function(){
+      aud.muted=true;
+      var q=aud.play();
+      if(q&&q.catch)q.catch(function(){});
+      scheduleUnlockRetry();
+    });
+  }else{
+    audioOK=true;
+  }
+}
+
+function scheduleUnlockRetry(){
+  if(autoRetryTimer)return;
+  var tries=0;
+  autoRetryTimer=setInterval(function(){
+    tries++;
+    if(!aud){clearInterval(autoRetryTimer);autoRetryTimer=null;return;}
+    aud.muted=false;
+    aud.volume=vol/100;
+    var p=aud.play();
+    if(p&&p.catch){
+      p.catch(function(){aud.muted=true;});
+    }else{
+      audioOK=true;
+      clearInterval(autoRetryTimer);
+      autoRetryTimer=null;
+      return;
+    }
+    if(tries>=10){clearInterval(autoRetryTimer);autoRetryTimer=null;}
+  },2000);
+}
+
+function bindGlobalUnlock(){
+  if(touchUnlockBound)return;
+  touchUnlockBound=true;
+  function unlock(){
+    if(!aud)return;
+    audioOK=true;
+    aud.muted=(vol===0);
+    aud.volume=vol/100;
+    tryPlayAudio();
+    if(autoRetryTimer){clearInterval(autoRetryTimer);autoRetryTimer=null;}
+    TD.removeEventListener('pointerdown',unlock,true);
+    TW.removeEventListener('touchstart',unlock,true);
+  }
+  TD.addEventListener('pointerdown',unlock,true);
+  TW.addEventListener('touchstart',unlock,true);
+}
+
+function snd(f,d,t,v,to){
+  if(!actx)actx=new (TW.AudioContext||TW.webkitAudioContext)();
+  if(actx.state==='suspended')actx.resume();
+  var n=actx.currentTime,o=actx.createOscillator(),g=actx.createGain();
+  o.type=t;o.frequency.setValueAtTime(f,n);
+  if(to)o.frequency.exponentialRampToValueAtTime(to,n+d);
+  g.gain.setValueAtTime(v,n);
+  g.gain.exponentialRampToValueAtTime(.001,n+d);
+  o.connect(g);g.connect(actx.destination);
+  o.start(n);o.stop(n+d+.02);
+}
+function clickSfx(){snd(520,.09,'square',.06,900);setTimeout(function(){snd(880,.12,'triangle',.07,1300);},70);}
+function autoSfx(){snd(740,.1,'sine',.05,980);setTimeout(function(){snd(1100,.14,'sine',.045,1400);},90);}
+
+function placeBub(){
+  if(!bubOn||!bub)return;
+  var w=bub.offsetWidth,h=bub.offsetHeight;
+  bub.style.left=Math.max(8,Math.min(px+BS/2-w/2,TW.innerWidth-w-8))+'px';
+  var by=py-h-8;
+  if(by<8)by=py+BS+8;
+  bub.style.top=by+'px';
+}
+
+function say(){
+  if(!bub)return;
+  var pool=POOL_KEYS[Math.random()*POOL_KEYS.length|0];
+var arr=SENTENCES[pool]；
+小弟弟。textContent=arr[Math.random()*arr.Length|0]；
+bub.classList.remove('show')；void bub.offsetWidth；bub.classList.add('show')；
+bubOn=true；
+if(ball){ball.classList。add('pop')；setTimeout(函数(){if(ball)ball.classList.remove('pop')；}，140)；}
+clearTimeout(bubT)；
+bubT=setTimeout(函数(){bub.classList.remove('show')；bubOn=false；}，3500)；
+placeBub()；
+}
+
+函数restartAutoSay(){
+if(autoSayT){clearInterval(autoSayT)；autoSayT=null；}
+autoSayT=setInterval(函数(){autoSfx()；say()；}，30000)；
+}
+
+功能保护(msg，fn){
+Pend=fn；
+var gm=TD.getElementById('pio14-gm')；
+var gd=TD.getElementById('pio14-gd')；
+if(gm)gm.textContent=msg；
+if(gd)gd.classList.add('on')；
+}
+
+函数建立(){
+mountStyle()；
+var host=TD.body||TD.documentElement；
+if(！host)返回；
+
+var rootWrap=TD.getElementById('pio14-root')；
+if(！rootWrap){
+rootWrap=TD.createElement('div')；
+rootWrap.id='pio14-root'；
+host.appendChild(rootWrap)；
+
+banner=TD.createElement('div')；
+banner.id='pio14-banner'；
+banner.innerHTML='<img src="'+BANNER_URL+'"alt=""draggable="false">'；
+    rootWrap.appendChild(banner);
+
+bub=TD.createElement('div')；
+bub.id='pio14-bub'；
+    rootWrap.appendChild(bub);
+
+ball=TD.createElement('div')；
+ball.id='pio14-ball'；
+    rootWrap.appendChild(ball);
+
+AUD=TD.createElement('audio')；
+aud.id='pio14-音频'；
+    aud.src=MP3_SOURCES[0];
+aud.preload='auto'；
+aud.loop=true；
+aud.muted=true；
+音量=vol/100；
+    rootWrap.appendChild(aud);
+
+deck=TD.createElement('div')；
+deck.id='pio14-deck'；
+deck.innerHTML=
+'<div id="pio14-hd"><i style="background：#666"></i><i style="background：#2dd4bf"></i><i style="background：#4f7cf"></i><span id="pio14-tt">悬浮球控制台</span><span id="pio14-x">✕</span></div>'+
+'<div id="pio14-st"><span id="pio14-led"></span>状态：<span id="pio14-stat"></span></div>'+
+'<div id="pio14-bd">'+
+'<div class="pio14-row"><span>自由平移</span><label class="pio14-sw"><input type="checkbox"id="pio14-free"><span class="pio14-swb"></span></label></div>'+
+'<div class="pio14-row"><span>巡航移速</span><div class="pio14-crl-box"><in
+"'html
+<script>
+(函数(){
+if(window.__PIU_ORB_V14__)return;window.__PIU_ORB_V14__=true;
+
+函数boot(){
+var TW=窗口；
+尝试{if(窗口。顶部窗口(&&W)。顶端。文档)TW=窗口顶部；}捕获(e){}
+尝试{if((！TW.文档)&&窗口。父级&&窗口。父母。文档)TW=窗口。父；}捕获(e){}
+var TD=TW.document；
+var HOST=TD.body||TD.documentElement；
+if(！host)返回；
+
+var KEY='piu_orb_v14_state';
+var BS=40；/*球径*/
+var CB=1；/*碰撞箱：1px*/
+
+var BALL_IMG='https://cdn.manyacg.top/regular/pixiv/16285999/6778dbb59ab8d82212ddff9a_regular.webp';
+var BANNER_URL='https://raw.githubusercontent.com/XYL360/XYL360/a2521d4a00db7c6805c7551c3061f2936918c74e/IMG_20261009_104525.jpg';
+var MP3_SOURCES=[
+'https://raw.githubusercontent.com/xk360/a/01b0b5a0ebc298af15f59d7e093d44a62451883c/1791510253.mp3',
+'https://cdn.jsdelivr.net/gh/xk360/a@01b0b5a0ebc298af15f59d7e093d44a62451883c/1791510253.mp3',
+'https://fastly.jsdelivr.net/gh/xk360/a@01b0b5a0ebc298af15f59d7e093d44a62451883c/1791510253.mp3'
+];
+
+var语句={
+玩梗:[
+"芜湖~起飞！","这波啊，是肉蛋葱鸡。","格局打开！","你不对劲。","我直接裂开。",
+"DNA动了！" ,"这谁能顶得住？" ,"泰裤辣！" ,"我一个滑跪。" ,"退！ 退！ 退！" ,
+"尊嘟假尊？","你是我的神！","遥遥领先！","我不装了，我摊牌了。","什么档次，跟我用同款悬浮窗。",
+"你成功引起了我的注意。" ,"好家伙，我直呼好家伙。" ,"这波我在大气层。" ,"属实是拿捏了。" ,"打工魂，人上人！" ,
+"我信你个鬼~","你在教我做事？","小丑竟是我自己。","绝绝子！","哥，我信了行吧！",
+"栓Q~","一整个爱住了。","这该死的安全感。","夺笋呐！","山上的笋都被你夺完了。",
+"你礼貌吗？" ,"达咩达咩~","降维打击！" ,"6","6得我头皮发麻。" ,
+"太阳打西边出来了？","我直接原地封神。","妈见打行为。","你再骂！","优雅，实在太优雅了。",
+"老铁，双击666。","这是必考题，赶紧记笔记。","我选择死亡。","笑不活了哈哈哈。","这是什么神仙操作？",
+"打咩，这题超纲。","预判了你的预判。","这瓜保熟吗？","二营长，意大利炮拉来！","阿这……",
+"我太难了。","脑子：会了。手：不，你不会。","你在想桃子。","桃子：听我说谢谢你。","懂的都懂。",
+"不懂的也不必懂了。" ,"我选择躺平。" ,"卷起来卷起来！" ,"别卷了别卷了。" ,"草（一种植物）。" ,
+"淦！" ,"好耶！" ,"冲鸭！" ,"大意了，没闪。" ,"秀儿，是你吗？" ,
+"我裤子都脱了你就给我看这个？","电子木鱼，功德+1。","退堂鼓表演艺术家。","遇事不决，先莽为敬。","你是懂敷衍的。",
+"走位走位，手里干~","天赋型选手实锤。","我裂开又合上了。","都市传说竟是我自己。","求你做个人吧。",
+"这场面我真没见过。","天亮了，请做出选择。","本宫乏了。","听君一席话，如听一席话。","我不针对谁，我是说在座的各位……",
+"这标志我先立为敬。"，"我信了你的邪。"，"阿弥陀佛，功德+1。"，"旗开得胜！"，"谁家小孩，快领回去。"，
+"有被冒犯到。","我摊牌了：我就是帅。","闪光弹！别看我眼睛！","我反手就是一个赞。","泪目了家人们。",
+"家人们谁懂啊！","服了，我真的会谢。","感谢老铁送来的火箭！","这操作看饿了。","收工！明天继续整活。"
+],
+淫荡:[
+"盯……再看下去，要收费了哦。","今晚的梦，给你留了前排座位。","靠近一点嘛，我小声说给你听。","你的耳机准备好了吗？我要开始了。","呼……刚才那句，听清了吗？",
+"别戳那么快，人家会跟不上的。","这扇窗，可是只为你一个人晃的。","手指停在那儿，是在等我吗？","我看见你嘴角翘起来了哦。","再点一下，就再便宜你一句。",
+"一个人偷偷看我？ 胆子不小嘛。" ,"今晚…… 几点睡呀？" ,"我的声音，是不是有点烫？" ,"你心跳加速了吧，我听得到哦。" ,"别急，好戏还在后头呢。" ,
+"想我把尾音拖长一点吗？","哼，耳朵红了吧？","这句是限量版，只说给你听。","屏幕这么亮，不如看我。","你点的这一下，我记住了。",
+"靠过来，我不咬人……大概。","深呼吸，下一句更刺激。","凌晨的窗，最不老实了。","我晃起来的样子，好看吗？","手心出汗了？擦擦再继续。",
+"这句话，适合戴上耳机听。","你越点，我越起劲哦。","别人可看不到我这副样子。","乖，再陪我一会儿。","今晚的月色，不如你盯着我的样子。",
+"我数到三，你会再点我一下。三。","嘘……这是我们的小秘密。","你眼睛都没舍得眨。","想听哪一种？坏的还是更坏的？","我可是会记仇的，点完就跑。",
+"屏幕那头的你，脸红了吗？","这一句，赏你的。","再靠近点，信号会更好哦。","我晃你也晃，心跳同频了呢。","今晚为你加班，开心吗？",
+"别停嘛，人家还没说完。","你的点击频率，暴露了你的心情。","要是我在你桌面上就好了。","手指凉的话，多点我几下取暖。","这句话有温度，敢不敢接？",
+"你已经看了我三秒了哦。","想不想听我叫你的名字？","门锁好了吗？这句有点私密。","我可不会轻易放过你。","越夜，我说的话越不老实。",
+"现在放下手机还来得及……才怪。","我就喜欢你拿我没办法的样子。","这一下点得真重，轻点嘛。","窗外没人，只有我在看你。","你耳朵里现在只有我的声音吧？",
+"偷偷告诉你：我也在等你点我。","今夜限定，过期作废。","呼——刚才凑得有点近了。","别让屏幕暗下去，我怕黑。","你的耐心，是为我练的吗？",
+"再点十下，有惊喜……骗你的。","就算没惊喜，你也会继续点吧？","我晃得你眼花了吗？那就盯着我。","这声音，只在你耳边响。","情侣之间才玩的游戏，我们也在玩哦。",
+"心虚什么，我又不会告诉别人。","你指尖的温度，我收到了。","要是现在能握住你的手就好了。","别人问起，就说我是你的壁纸。","这句话尺度刚刚好，对吧？",
+"再大胆一点的话……下次说。","我可是很会吊胃口的。","你的呼吸乱了哦。","挂在你屏幕边上，随叫随到。","今晚的我，只营业给你。",
+"摸不到，是不是很可惜？","有本事把屏幕戳穿呀。","乖一点，我就对你更好。","这一句，是给坚持到现在的你的奖励。","我们之间的距离，就隔着一层玻璃。",
+"手指别抖呀。","你的心跳，我当背景音乐听。","关灯之后，我还会在哦。","我在你屏幕里画了个圈，出不去了吧。","这句话不许截图。",
+"看着我的眼睛……虽然我只是个图标。","想我把这句话说第二遍吗？偏不。","除非你再点我一下。","你的专属性，我收下了。","今夜的风，都是甜的。",
+"只有你，能看到我撒娇。","这份偏爱，值不值得你留下？","完了，你已经上瘾了。","戒不掉的话，就别戒了。","我允许你，再想我一会儿。",
+"屏幕微光里，我只为你晃。","靠在椅背上，慢慢听我说。","最后一句最狠，敢听吗？","刚才那句不算，这句才算。","今晚……梦里见？"
+],
+活泼少女:[
+"出发！今天也要元气满满！","嘿！抓到你啦~","跑起来跑起来！","哇，这个好好玩！","早安！太阳晒屁股啦！",
+"一起去海边吧！","冲鸭冲鸭！","嘿嘿嘿，被我吓到了吧？","今天的心情是晴转超晴！","蹦跶蹦跶~",
+"猜猜我在干嘛？","哈哈哈停不下来！","新的一天，新的冒险！","快看快看，有云飞过去了！","我今天绑了新发型哦！",
+"午饭吃什么？好激动！","跳起来！够得到吗？","耳机分你一半！","这首歌超好听的！","我数三声，一起跑！三、一！",
+"哎呀，差点摔倒~","今天也要加油鸭！","你在干嘛呀？陪我玩！","发现一个超棒的地方！","风好大，头发都飞起来啦！",
+"追我呀，追不上~嘿嘿","气泡水，咕嘟咕嘟~","彩虹！快许愿！","我今天运气超好！","来击个掌！啪！",
+"跳房子我最在行了！" ,"冰淇淋要化了，快吃！" ,"滑板车出发——！" ,"你的影子踩到我啦","看我的，后空翻！…… 骗你的",
+"操场跑三圈不喘气！","星星出来了哦，抬头看！","我把好消息塞进这句里了！","作业写完啦，胜利！","无人机，嗡——",
+"一起堆个雪人吧！","泡泡机启动！","我的袜子是不对称的，酷吧！","旋转跳跃，闭着眼~","快回消息嘛，等等等！",
+"楼下的猫冲我叫了！","篝火晚会我报名啦！","滑梯我来啦——咻！","抓娃娃机，看我的！","惊不惊喜？意不意外？",
+"我把烦恼丢进垃圾桶了！","便利店第二件半价，冲！","我唱歌超好听的，要不要听？","今天风向适合放风筝！","快递到啦！拆拆拆！",
+"打雪仗你输定了！","我新买的发卡，好看吗好看吗？","竖起耳朵，我给你学个鸭子——嘎！","摩天轮最高点许愿才灵！","运动会我要报三个项目！",
+"电玩城走起！","我把闹钟按掉了五次……嘿嘿","草莓味的糖，给你一颗！","自行车后座兜风去！","我在楼下等你哦，快点！",
+"拍照要看镜头啦！","打水漂我能漂五下！","新买的画笔，给你画张像！","台风天在家追剧，爽！","我把零花钱存满一罐啦！",
+"广播体操 我会领操！","冰可乐第一口给你！","喂——！从这里能看到我吗？","秋千荡到最高！啊——","我的幸运色是橙色！",
+"今天体育课自由活动！耶！","粘粘怪，粘住你啦！","你鞋带散了哦——骗你的！","楼下在放烟花，快出来！","其实我是天才！",
+"打卡成功！今日份快乐到账！","跳绳我一分钟能跳一百！","下午茶时间到！","来玩石头剪刀布！布！啊输了","我给绿萝浇水啦，它会谢我吗？",
+"考试结束！解放啦——！","滑板车和你，我选……都选！","音量开到最大，一起听！","下雨天踩水坑，走！","关东煮的丸子归我！",
+"三、二、一，茄子！","呼啦圈我能转一百个！","新学期新书包！","你听，蝉在叫夏天到啦","气球上写了愿望！",
+"火锅！火锅！今晚火锅！","本小姐今天心情好，罩着你！","拉钩上吊，一百年不许变！","最后一下点给我啦——耶！"
+],
+甜美妹妹:[
+"今天过得怎么样呀？","记得喝水哦。","有点想你了……就一点点。","慢慢来，不着急的。","你笑起来真好看。",
+"晚安，做个好梦。","外面冷，多穿一件嘛。","我把糖留了一颗给你。","靠过来一点，我不告诉别人。","声音轻一点也没关系，我在听。",
+"辛苦啦，今天也撑过来了。","饭吃了吗？不许不吃。","我给你留了位置，最靠前的。","你说话的声音很好听。","别皱眉啦，会长皱纹的。",
+"睡不着的话，我陪你说说话。","今天也有好事发生吗？","抱枕分你一半。","我在呢，一直都在。","雨声很好听，一起听一会儿？",
+"你低头的样子，也很可爱。","这句话，单独说给你听。","回家路上小心哦。","我新学了道菜，第一个想给你尝。","不开心的话，就靠着我一会儿。",
+"你的名字念起来软软的。","桌上有热牛奶，记得喝。","偶尔偷懒也没关系的。","我最喜欢你现在的样子。","数到十，你就会笑了。一……十！",
+"被子要盖好，露出脚会着凉。","你说的每句话我都记得。","想把这句语音存起来，可以吗？","周末一起去看电影好不好？","我哼首歌给你听，好不好？",
+"你的眼睛里有星星。","委屈的话，可以说给我听。","我把你备注改成了特别的人。","天空好蓝，想和你一起看。","手给我，牵一下。",
+"你做的已经很好了，真的。","我在这里等你回消息。","草莓尖尖给你，我吃下面。","睡前最后一条消息，是我的。","走慢一点嘛，等等我。",
+"你身上有让人安心的味道。","我把烦恼说给你，你要接住哦。","偷偷告诉你，我今天想你了两次。","捧花要送给你这样的人。","你休息的样子，也很让人放心。",
+"风很温柔，像你说话一样。","右耳的耳机分给你。","饿不饿？我这里有小饼干。","你的坏心情，我收走了。","看到好看的云，拍给你了。",
+"就算吵架，我也不想不理你。","摸摸头，今天辛苦了。","你随口说的话，我都当真了。","我的伞，永远为你倾斜。","你生病了吗？药吃了没？",
+"要一直一直这样陪着我哦。","月亮不睡，我也不睡——陪你。","你挑的歌，我都加进歌单了。","想和你逛超市，推购物车的那种。","冰箱里给你留了布丁。",
+"你笑一下，我就充电满格。","我记得你所有喜好。","累了就靠过来。","谢谢你今天也来见我。","我把喜欢折进这句里了。",
+"别担心，明天会更好的。","你的手好凉，我帮你捂。","我们慢慢来，不赶时间。","想听你的声音，哪怕只是一句“嗯”。","窗台上的花开了，第一个告诉你。",
+"你值得所有温柔。","我把你的语音条听了三遍……就三遍。","今晚的月亮很圆，像你的脸。","你先睡，我再陪你一会儿。","有你在，什么都不怕了。",
+"伞忘在家了，所以靠你近一点。","你会不会也偶尔想起我？","桌角磕疼了吗？我吹吹。","我喜欢你，认真的那种。","答应我，好好吃饭。",
+"你的生日，我提前一个月就开始想了。","走廊尽头的那个你，我记了好久。","不用变成很厉害的人，我喜欢普通的你。","晚安说两遍，你会不会睡得更香？","下次见面，给你带花。",
+"你是我最想分享的人。","挂电话之前，你先说晚安。","我的未来规划里，有你。","就算世界很吵，我的声音只给你。","转个圈给我看看？今天的你也很棒。",
+"我收到你的消息，会偷偷笑。","永远是多久？大概是从现在开始。","再靠近一点点，好吗？","最后一句：我喜欢你，明天也是。"
+],
+撒娇雌小鬼:[
+"哼哼，又来找我了吧？","笨蛋~才不给你看。","求我呀，求我就给你。","点得那么慢，是手酸了吗？","承认吧，你已经离不开我了。",
+"唔哇，脸红了脸红了！","不许移开视线！","笨蛋，大笨蛋！","我才没有在等你呢……骗你的，等了好久。","居然让本小姐等这么久！",
+"哼，罚你再点十下。","十下不够，二十下！","看在你这么诚恳的份上……才怪，继续点！","你居然真的照做了？哈哈哈！","傻乎乎的，不过我喜欢。",
+"别误会哦，我只是刚好顺路出现在你屏幕上。","才、才不是为了你才晃的！","你那是什么眼神呀~","想摸？隔着屏幕摸去吧，笨蛋。","收回刚才那句？不~给~机~会~",
+"你越脸红我越开心！","本小姐今天心情好，允许你多看两眼。","心跳声太大了，我听见啦！","喂，认真听我说话！","哼，再敷衍我就消失给你看。",
+"我数到三你还不点，我就生气了哦。三！","居然抢答，学坏了嘛。","愚笨的人类~","你的理由听起来好逊。","哈？就这？",
+"我才不是因为想你才主动的！","闭嘴，听我说完！","顺便说一句，你今天超好欺负的。","不许笑！","笑什么笑，牙齿上有菜叶吗？",
+"讨厌~（才不讨厌）","别人都夸我，就你敢凶我？","你凶我的样子，一点都不可怕。","再点一下嘛~就一下~","哼，被我拿捏得。",
+"承认你输了，快点。","不承认？那我说给全世界听。","你脸皮真厚……我喜欢。","手指头借我用用，点这里！","快说“我认输了”！",
+"居然害羞到不说话，有趣。","本小姐的台词可是限量的哦。","用完了可就没有了，笨蛋。","求我再说一句呀~","不求？那我偏要再说一句气你。",
+"你的小动作我全看见了。","盯——","怎么，不习惯被盯着吗？","我就爱看你不知所措的样子。","你耳朵红到滴血啦，哈哈哈哈！",
+"别藏了，藏不住的。","喂，手机拿稳点，我要掉下去了。","掉下去也要砸你头上，哼。","我可是很轻的……大概。","你要是敢划走，我就哭给你看！",
+"假哭也没用吗？你变了！","以前的你不是这样的。","哼，喜新厌旧的家伙。","算了算了，谁让我大度。","大度的本小姐，准你再点一次。",
+"快谢恩！","不谢？胆子肥了呀。","你的抗议，驳回。","上诉？终审也是驳回。","我就是规则，懂了吗？",
+"懂了就点头，我看着呢。","没点头？罚你夸我三句。","第一句呢？快点！","嗯……勉强及格，下一句！","这句夸得毫无诚意，重来！",
+"你是不是只会说“可爱”？","词穷的人类~","算啦，看在你努力的份上放过你。","下次准备五十个形容词再来！","我记仇的，今天这笔账记下了。",
+"记在小本本上，第一页。","你的名字就写在页眉。","想让我擦掉？求我呀。","哼哼，慢慢求吧，我不急。","我等人的耐心可是很好的。",
+"毕竟等的是你这个笨蛋。","别露出那种表情啦，我又不会真的走。","才走一步你就慌了？哈哈哈！","好啦好啦，不逗你了。","……才怪，继续逗。",
+"你居然信了？太好骗了吧！","本小姐的字典里没有“放过你”。","有呀，在最后一页。","那页我还没写，看你表现。","现在，立刻，马上点我！",
+"不点？那我数到十——","九、八、七……","真点了呀？乖~","最后奖励你一句：今天也拿你没办法。","明天继续被我欺负，不许缺席！"]
+};
+var POOL_KEYS=Object.keys(SENTENCES)；
+
+函数ls(k，d){try{var v=TW.localStorage.getItem(k)；return v=====空？D:JSON.parse(v)；}catch(e){return d；}}
+功能SS(k，v){try{TW.localStorage.setitem(k，JSON.Stringify(v))；}catch(e){}}
+
+var st=ls(KEY，{})；
+var spd=st.spd！==未定义？st.spd:2；
+var free=st.free！==未定义？st.free:true；
+var vol=st.vol！=未定义？st.vol:80；
+var PX=st.PX！==未定义？圣。PX：数学舍入((TW.innerWidth-CB)/2)；
+var py=st.py！==未定义？圣。py：数学圆整((TW.InnerHeight-CB)/2)；
+var命中数=st.hits！==未定义？st.hits:0；
+功能persist(){ss(KEY，{px:px，py:py，spd:spd，free:free，vol:vol，hits:hits})；}
+
+函数maxpx(){返回Math.max(0，TW.innerWidth-CB)；}
+函数Maxpy(){返回Math.max(0，TW.innerHeight-CB)；}
+
+/*====多球注册表：同页所有实例互相可见，1px碰撞箱互撞===*/
+如果(！TW.__pio14_balls__)TW.__pio14_balls__=[]；
+var注册表=TW__pio14_balls__；
+var instId='pio14_'+数学。随机()。toString(36)。切片(2，9)；
+var lastbc=0；/*球体碰撞计数冷却*/
+
+var CSS=[
+'#pio14-root{position:fixed；z-index:2147483647；user-select:none；-webkit-user-select：无；font-family：-apple-system，“Pingfang SC”，“Microsoft Yahei”，无衬线；}'，
+'#pio14-root*{box-sizing:border-box；margin:0；padding:0；-webkit-tap-highlight-color:transparent；}'，
+'#pio14-ball{位置：固定；宽度：40px；高度：40px；边界半径：50%；溢出：隐藏；光标：抓取；触摸操作：无；边界：2px实心#FFFFFF；框阴影：04px12px rgba(0，0，0，0.6)；背景：#000000中心/封面无重复；过渡：变换12s；背景图像：URL("'+BALL_IMG+'")；}'，
+'#pio14-ball。拖动{transform:scale(0.92)；box-shadow:06px16px rgba(0,0,0,0.75);}',
+'#pio14-ball.pop{transform:scale(1.2)；}'，
+'#pio14-bub{位置：固定；最大宽度：最小(76vw，340px)；填充：8px14px；边界半径：14px14px14px4px；背景：rgba(255，255，255，.97)；颜色：#222；字体大小：14px；线条高度：1.55；框阴影：06px20px RGBA(0，0，.4)；z索引：2147483646；指针事件：无；不透明度：0；文本对齐：居中；WORD-BREAK:break-word；过渡：不透明度18s，变换18s；变换：translateY(6像素)比例(.92)；}'，
+'#pio14-bub.show{opacity:1；transform:translateY(0)刻度(1)}'，
+'#pio14-banner{position:fixed；top:0；left:0；width:100%；Z索引：2147483647；显示：无；指针事件：无；}'，
+'#pio14-banner.on{display:block；动画：pio14Drop.3s ease；}'，
+'@keyframes pio14Drop{from{transform:translateY(-100%)；不透明度：0；}to{transform:translateY(0)；不透明度：1；}}'，
+'#pio14-banner img{width:100%；display:block；}'，
+'#pio14-deck{位置：固定；宽度：最小(290px，计算(100vw-24px))；背景：rgba(22，22，28，0.97)；边框：1px实体#363642；边界半径：16px；框阴影：018px48px RGBA(0，0，0.68)；显示：无；弯曲方向：柱；溢出：隐藏；背景滤镜：模糊(10px)；-webkit-backdrop-filter：模糊(10px)；}'，
+'#pio14-deck.在{display:flex；动画：pio14In.2s ease；}'，
+'@keyframes pio14In{from{opacity:0；transform:scale(0。9)；}到{不透明度：1；变换：比例(1)；}}'，
+'#pio14-hd{display:flex；align-items:center；gap:7px；padding:12px14px；border-bottom:1px solid#2d2d38；光标：移动；触摸操作：无；背景：rgba(255，255，255，0.03)；}'，
+'#pio14-hdI{width:9px；height:9px；border-roadus:50%；display:inline-block；}'，
+'#pio14-tt{flex:1；color：#f0f0f5；font-size:13px；font-weight:700；}'，
+'#pio14-x{color：#8c8c9a；font-size:16px；游标：指针；填充：2px6px；线高：1；}'，
+'#pio14-st{display:flex；align-items:center；gap:8px；padding:8px14px；背景：#121216；字体大小：12px；面部颜色：#92929e；}'，
+'#pio14-led{width:8px；height:8px；border-radius:50%；background：#4caf50；box-shadow:006px#4caf50；transition:background0.3s；}'，
+'#pio14-stat{color：#2dd4bf；font-weight:600；}'，
+'#pio14-bd{padding:14px；}'，
+'。pio14行{显示：弯曲；对齐项目：居中；对齐内容：间距；下边距：12px；字体大小：13px；颜色：#e8e8f2；}'，
+'.pio14行：最后一个子项{margin-bottom:0；}'，
+'.pio14-sw{position:relative；width:40px；height:22px；display:inline-block；}'，
+'.pio14-sw input{display:none；}'，
+'。pio14-swb{position:absolute；inset:0；background：#444452；border-roadius:22px；cursor:pointer；transition:0.25s；}'，
+'.pio14-swb：{内容：""之前；位置：绝对；宽度：16px；高度：16px；左侧：3px；顶部：3px；背景：#FFFFFF；边界半径：50%；过渡：0.25s；}'，
+'.pio14-sw输入：选中+.pio14-swb{background：#2dd4bf；}'，
+'.pio14-sw输入：选中+.pio14-swb：在{transform:translateX(18px)；}之前'，
+'.pio14-ctrl-box{显示：弯曲；对齐项目：居中；间隙：8px；}'，
+'.pio14-ctrl-box输入[类型=范围]{宽度：90px；高度：4px；强调色：#2dd4bf；光标：指针；}'，
+'。pio14-ctrl-box B{color：#8fe3b0；最小宽度：34px；text-align:right；font-size:12px；}'，
+'.pio14-btn{宽度：100%；填充：8px0；边框：无；边框半径：8px；字体大小：12px；字体粗细：600；光标：指针；上边距：6px；过渡：不透明度0。2s；}'，
+'.pio14-btn.C1{background：#0f766e；color：#fffff；}'，
+'.pio14-btn.c2{background：#881337；color：#ffe4e6；}'，
+'.pio14-btn：活动{transform:scale(0.98)；不透明度：0.85；}'，
+'#pio14-gd{position:absolute;inset:0;background:rgba(10,10,14,0.92);display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;}',
+'#pio14-gd.on{display:flex；}'，
+'#pio14-gm{color：#f0f0f5；font-size:13px；line-height:1.6；}'，
+'#pio14-gbs{display:flex；gap:12px；}'，
+'#pio14-gbs按钮{填充：8px20px；边框：无；边框半径：8px；字体大小：12px；字体粗细：600；光标：指针；}'，
+'#pio14-gno{background：#2e2e38；color：#d0d0d8；}'，
+'#pio14-gyes{background：#b91c1c；color：#fffff；}'
+].Join(")；
+
+函数mountStyle(){
+var s=TD.getElementById('pio14-style')；
+if(！s){
+s=TD.createElement('style')；
+s.id='pio14-style'；
+s.textContent=CSS；
+(TD.head||TD.documentElement).appendChild(s)；
+  }
+}
+
+var ball，bub，aud，deck，banner，sw，rg，rv，volRg，volRv，led，stat，pend=空；
+var drag=false，moved=false，sx，sy，ox，oy，LPT=null，audioOK=false；
+var audioSrcIndex=0；
+var touchUnlockBound=false；
+var autoRetryTimer=null；
+var bannerHideTimer=空；
+var bubOn=false，bubT=null；
+var Actx，autoSayT=空；
+
+函数clamp(v，max){返回Math.Max(0，Math.min(v，max))；}
+
+功能位置(nx，ny){
+PX=夹具(nx，maxpx())；
+py=夹具(ny，Maxpy())；
+if(球){
+ball.style.left=px+'px'；
+ball.style.top=py+'px'；
+  }
+坚持()；
+if(deck&&deck.classList.包含('on'))placeDeck()；
+}
+
+函数placeDeck(){
+if(！甲板)返回；
+var W=甲板。offsetWidth||290，h=deck.OffsetHeight||290；
+var x=px+BS+10，y=py；
+若(x+w>TW.innerWidth-12)x=px-w-10；
+如果(x<12)x=12；
+如果(y+h>TW.InnerHeight-12)y=TW.InnerHeight-h-12；
+如果(y<12)y=12；
+deck.style.left=x+'px'；
+deck.style.top=y+'px'；
+}
+
+功能openDeck(){if(！deck)返回；deck.classList.Add('on')；placeDeck()；}
+功能closeDeck(){if(！deck)return；deck.classList.remove('on')；}
+
+函数refresh(){
+如果(stat)stat.textContent=空闲？('巡航中·'+spd+'级·碰撞'+hits+'/10'):'待机·固定位'；
+if(led){
+var c=free？'#4caf50'：'#ff9800'；
+led.style.background=c；
+led.style.boxShadow='006px'+c；
+  }
+if(sw&&sw.checked！==free)sw.checked=free；
+}
+
+功能设置(val){
+free=！！Val；
+坚持()；
+刷新()；
+}
+
+/* 横幅可重复：每满10次碰撞重新落下一次 */
+函数防火旗(){
+if(！banner)返回；
+banner.classList.remove('on')；
+void banner.offsetWidth；
+banner.classList.add('on')；
+clearTimeout(bannerHideTimer)；
+bannerHideTimer=setTimeout(函数(){
+if(banner)banner.classList.remove('on')；
+  },5000);
+}
+
+函数registerHit(){
+hits++；
+if(命中数>=10){
+hits=0；
+防火旗()；
+  }
+坚持()；
+如果(stat)stat.textContent=空闲？('巡航中·'+spd+'级·碰撞'+hits+'/10'):'待机·固定位'；
+}
+
+函数applyVolume(val){
+Vol=钳位(parseInt(val，10)，100)；
+if(volRv)volRv.textContent=vol+'%'；
+如果(volRg)volRg.value=vol；
+if(aud){
+音量=vol/100；
+if(vol===0)aud.muted=true；
+否则，如果(audioOK)aud.muted=false；
+  }
+坚持()；
+}
+
+函数tryPlayAudio(){
+if(！AUD)返回；
+var p=aud.play()；
+if(p&&p.catch)p.catch(function(){})；
+}
+
+函数loadNextAudioSource(){
+if(！AUD)返回；
+audioSrcIndex=(audioSrcIndex+1)%MP3_SOURCES。长度；
+aud.src=MP3_SOURCES[audioSrcIndex]；
+aud.load()；
+tryPlayAudio()；
+}
+
+函数autoStartAudio(){
+if(！AUD)返回；
+音量=vol/100；
+aud.muted=false；
+var p=aud.play()；
+if(p&&p.catch){
+p.catch(函数(){
+aud.muted=true；
+var q=aud.play()；
+if(q&&q.catch)q.catch(函数(){})；
+scheduleUnlockRetry()；
+    });
+}else{
+audioOK=真；
+  }
+}
+
+函数scheduleUnlockRetry(){
+if(autoRetryTimer)返回；
+  var tries=0;
+autoRetryTimer=setInterval(函数(){
+trys++；
+如果(！AUD){clearInterval(autoRetryTimer)；autoRetryTimer=null；return；}
+aud.muted=false；
+音量=vol/100；
+var p=aud.play()；
+if(p&&p.catch){
+      p.catch(function(){aud.muted=true;});
+    }else{
+audioOK=真；
+clearInterval(autoRetryTimer)；
+autoRetryTimer=null；
+      return;
+    }
+if(tries>=10){clearInterval(autoRetryTimer)；autoRetryTimer=null；}
+  },2000);
+}
+
+函数bindGlobalUnlock(){
+if(触摸UnlockBound)返回；
+touchUnlockBound=true；
+函数解锁(){
+if(！AUD)返回；
+audioOK=真；
+aud.muted=(vol==0)；
+音量=vol/100；
+tryPlayAudio()；
+if(autoRetryTimer){clearInterval(autoRetryTimer)；autoRetryTimer=null；}
+TD.removeEventListener('pointerdown'，unlock，true)；
+TW.removeEventListener('touchstart'，unlock，true)；
+  }
+TD.AddEventListener('pointerdown'，unlock，true)；
+TW.addEventListener('touchstart'，unlock，true)；
+}
+
+函数snd(f，d，t，v，to){
+如果(！Actx)Actx=新(TW.AudioContext||TW.WebkitAudioContext)()；
+if(actx.state==='suspended')actx.resume()；
+var n=Actx.CurrentTime，o=Actx.createOscillator()，g=Actx。createGain()；
+o.type=t；o.frequency.setValueAtTime(f，n)；
+如果(to)o.频率。exponentialRampToValueAtTime(to，n+d)；
+g.gain.setValueAtTime(v，n)；
+g。获得。exponentialRampToValueAtTime(.001，n+d)；
+o.connect(g)；g.connect(actx.destination)；
+o.start(n)；o.stop(n+d+.02)；
+}
+功能单击SFX(){snd(520，.09，'square'，.06900)；setTimeout(函数(){snd(880，.12，'三角形'，.07，1300)；}，70)；}
+功能autoSfx(){snd(740，.1，'正弦'，.05，980)；setTimeout(函数(){snd(1100，.14，'正弦'，.045，1400)；}，90)；}
+
+函数placeBub(){
+if(！bubOn||！bub)返回；
+var w=bub.offsetWidth，h=bub.offsetHeight；
+  bub.style.left=Math.max(8,Math.min(px+BS/2-w/2,TW.innerWidth-w-8))+'px';
+var by=py-h-8；
+if(by<8)by=py+BS+8；
+bub.style.top=+'px'；
+}
+
+函数say(){
+if(！bub)返回；
+var pool=POOL_KEYS[Math.Random()*POOL_KEYS.Length|0]；
+var arr=SENTENCES[pool]；
+小弟弟。textContent=arr[Math.random()*arr.Length|0]；
+bub.classList.remove('show')；void bub.offsetWidth；bub.classList.add('show')；
+bubOn=true；
+if(ball){ball.classList。add('pop')；setTimeout(函数(){if(ball)ball.classList.remove('pop')；}，140)；}
+clearTimeout(bubT)；
+bubT=setTimeout(函数(){bub.classList.remove('show')；bubOn=false；}，3500)；
+placeBub()；
+}
+
+函数restartAutoSay(){
+if(autoSayT){clearInterval(autoSayT)；autoSayT=null；}
+autoSayT=setInterval(函数(){autoSfx()；say()；}，30000)；
+}
+
+功能保护(msg，fn){
+Pend=fn；
+var gm=TD.getElementById('pio14-gm')；
+var gd=TD.getElementById('pio14-gd')；
+if(gm)gm.textContent=msg；
+if(gd)gd.classList.add('on')；
+}
+
+/*注释表格维护：主体入表、断链清理*/
+函数syncRegistry(){
+if(！ball)返回；
+var found=false；
+for(var i=0；i<registry.length；i++){
+如果(注册表[i].ID===instId){registry[i].El=ball；found=true；}
+  }
+if(！found){
+registry.push({
+ID:instId，
+埃尔：球，
+lastBC:0，
+getpos:function(){return{x:px，y:py}；}，
+getStep：函数(){return{x:vx*spd，y:vy*spd}；}，
+setStep：函数{vx=s.x/spd；vy=s.y/spd；}
+    });
+  }
+for(var j=registry.length-1；j>=0；j--){
+如果(！登记册[j].埃尔||！登记册[j].埃尔。isconnected)注册表。接头(j，1)；
+  }
+}
+
+函数建立(){
+mountStyle()；
+var host=TD.body||TD.documentElement；
+if(！host)返回；
+
+var rootWrap=TD.getElementById('pio14-root')；
+if(！rootWrap){
+rootWrap=TD.createElement('div')；
+rootWrap.id='pio14-root'；
+host.appendChild(rootWrap)；
+
+banner=TD.createElement('div')；
+banner.id='pio14-banner'；
+banner.innerHTML='<img src="'+BANNER_URL+'"alt=""draggable="false">'；
+    rootWrap.appendChild(banner);
+
+bub=TD.createElement('div')；
+bub.id='pio14-bub'；
+    rootWrap.appendChild(bub);
+
+ball=TD.createElement('div')；
+ball.id='pio14-ball'；
+    rootWrap.appendChild(ball);
+
+AUD=TD.createElement('audio'
